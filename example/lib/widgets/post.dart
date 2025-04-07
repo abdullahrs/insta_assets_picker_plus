@@ -141,11 +141,11 @@ class PostCard extends StatelessWidget {
         itemCount: post.files.length,
         itemBuilder: (context, index) {
           final file = post.files[index];
-          final isVideo = isVideoFile(file);
+          // final isVideo = isVideoFile(file);
 
-          if (isVideo) {
-            return _PostVideoPlayer(file: file);
-          }
+          // if (isVideo) {
+          //   return _PostVideoPlayer(file: file);
+          // }
           return Image.file(file);
         },
       ),

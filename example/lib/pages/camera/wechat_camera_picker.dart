@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_assets_picker/insta_assets_picker.dart';
 import 'package:insta_assets_picker_demo/widgets/crop_result_view.dart';
 import 'package:insta_assets_picker_demo/widgets/insta_picker_interface.dart';
-import 'package:wechat_camera_picker/wechat_camera_picker.dart';
+// import 'package:wechat_camera_picker/wechat_camera_picker.dart';
 
 class WeChatCameraPicker extends StatelessWidget with InstaPickerInterface {
   const WeChatCameraPicker({super.key});
@@ -16,24 +16,24 @@ class WeChatCameraPicker extends StatelessWidget with InstaPickerInterface {
       );
 
   /// Needs a [BuildContext] that is coming from the picker
-  Future<void> _pickFromWeChatCamera(BuildContext context) async {
-    Feedback.forTap(context);
-    final AssetEntity? entity = await CameraPicker.pickFromCamera(
-      context,
-      locale: Localizations.maybeLocaleOf(context),
-      pickerConfig: CameraPickerConfig(
-        theme: Theme.of(context),
-        resolutionPreset: cameraResolutionPreset,
-        // to allow video recording
-        enableRecording: true,
-      ),
-    );
-    if (entity == null) return;
+  // Future<void> _pickFromWeChatCamera(BuildContext context) async {
+  //   Feedback.forTap(context);
+  //   final AssetEntity? entity = await CameraPicker.pickFromCamera(
+  //     context,
+  //     locale: Localizations.maybeLocaleOf(context),
+  //     pickerConfig: CameraPickerConfig(
+  //       theme: Theme.of(context),
+  //       resolutionPreset: cameraResolutionPreset,
+  //       // to allow video recording
+  //       enableRecording: true,
+  //     ),
+  //   );
+  //   if (entity == null) return;
 
-    if (context.mounted) {
-      await InstaAssetPicker.refreshAndSelectEntity(context, entity);
-    }
-  }
+  //   if (context.mounted) {
+  //     await InstaAssetPicker.refreshAndSelectEntity(context, entity);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) => buildLayout(
@@ -57,7 +57,7 @@ class WeChatCameraPicker extends StatelessWidget with InstaPickerInterface {
               ),
               const SizedBox(width: 8),
               InstaPickerCircleIconButton(
-                onTap: () => _pickFromWeChatCamera(context),
+                onTap: () => {},//_pickFromWeChatCamera(context),
                 theme: pickerTheme,
                 icon: const Icon(Icons.camera_alt),
                 size: height,
@@ -66,7 +66,7 @@ class WeChatCameraPicker extends StatelessWidget with InstaPickerInterface {
             specialItemBuilder: (context, _, __) {
               // return a button that open the camera
               return ElevatedButton(
-                onPressed: () => _pickFromWeChatCamera(context),
+                onPressed: () =>{},// _pickFromWeChatCamera(context),
                 style: ElevatedButton.styleFrom(
                   shape: const RoundedRectangleBorder(),
                   foregroundColor: Colors.white,

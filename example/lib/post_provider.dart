@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:ffmpeg_kit_flutter_min/ffmpeg_kit.dart';
-import 'package:ffmpeg_kit_flutter_min/ffmpeg_kit_config.dart';
-import 'package:ffmpeg_kit_flutter_min/return_code.dart';
+// import 'package:ffmpeg_kit_flutter_min/ffmpeg_kit.dart';
+// import 'package:ffmpeg_kit_flutter_min/ffmpeg_kit_config.dart';
+// import 'package:ffmpeg_kit_flutter_min/return_code.dart';
 import 'package:flutter/foundation.dart';
 import 'package:insta_assets_picker/insta_assets_picker.dart';
 import 'package:insta_assets_picker_demo/utils.dart';
@@ -125,31 +125,31 @@ class PostProvider with ChangeNotifier {
         if (ffmpegScale != null) 'scale=${ffmpegScale}'
       ];
 
-      FFmpegKitConfig.enableStatisticsCallback((stats) {
-        final asset = exportDetails.selectedAssets[i];
-        if (asset.type != AssetType.video) return;
-        final double val = stats.getTime() / asset.duration / 1000;
-        // update progress based on ffmpeg statistics
-        _updateProgress(postId, progressValue - step + step * val.clamp(0, 1));
-      });
-      final session = await FFmpegKit.execute(
-        "-y -i \'${originFile.path}\' ${filters.isNotEmpty ? "-vf \'${filters.join(",")}\'" : ''} -c:a copy \'$outputPath\'",
-      );
-      final returnCode = await session.getReturnCode();
+    //   FFmpegKitConfig.enableStatisticsCallback((stats) {
+    //     final asset = exportDetails.selectedAssets[i];
+    //     if (asset.type != AssetType.video) return;
+    //     final double val = stats.getTime() / asset.duration / 1000;
+    //     // update progress based on ffmpeg statistics
+    //     _updateProgress(postId, progressValue - step + step * val.clamp(0, 1));
+    //   });
+    //   final session = await FFmpegKit.execute(
+    //     "-y -i \'${originFile.path}\' ${filters.isNotEmpty ? "-vf \'${filters.join(",")}\'" : ''} -c:a copy \'$outputPath\'",
+    //   );
+    //   final returnCode = await session.getReturnCode();
 
-      if (ReturnCode.isSuccess(returnCode)) {
-        // SUCCESS
-        files.add(File(outputPath));
-        _updateProgress(postId, progressValue);
-      } else if (ReturnCode.isCancel(returnCode)) {
-        // CANCEL
-        _updateProgress(postId, progressValue, hasError: true);
-        throw 'Error: FFmpeg execution got cancel.';
-      } else {
-        _updateProgress(postId, progressValue, hasError: true);
-        // ERROR
-        throw 'Error: FFmpeg failed.';
-      }
+    //   if (ReturnCode.isSuccess(returnCode)) {
+    //     // SUCCESS
+    //     files.add(File(outputPath));
+    //     _updateProgress(postId, progressValue);
+    //   } else if (ReturnCode.isCancel(returnCode)) {
+    //     // CANCEL
+    //     _updateProgress(postId, progressValue, hasError: true);
+    //     throw 'Error: FFmpeg execution got cancel.';
+    //   } else {
+    //     _updateProgress(postId, progressValue, hasError: true);
+    //     // ERROR
+    //     throw 'Error: FFmpeg failed.';
+    //   }
     }
 
     if (files.isEmpty) {

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:camera/camera.dart';
+// import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_assets_picker/insta_assets_picker.dart';
 import 'package:insta_assets_picker_demo/main.dart';
@@ -33,8 +33,8 @@ mixin InstaPickerInterface on Widget {
 
   /// NOTE: Exception on android when playing video recorded from the camera
   /// with [ResolutionPreset.max] after FFmpeg encoding
-  ResolutionPreset get cameraResolutionPreset =>
-      Platform.isAndroid ? ResolutionPreset.high : ResolutionPreset.max;
+  // ResolutionPreset get cameraResolutionPreset =>
+  //     Platform.isAndroid ? ResolutionPreset.high : ResolutionPreset.max;
 
   Column pickerColumn({
     String? text,
