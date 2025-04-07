@@ -1,7 +1,8 @@
 name: insta_assets_picker
 description: An image (and videos) picker similar with Instagram, supports multi picking, crop and aspect ratio.
 version: 3.1.0
-repository: https://github.com/LeGoffMael/insta_assets_picker
+repository: https://github.com/abdullahrs/insta_assets_picker_plus.git
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 topics:
   - picker
   - crop
@@ -17,7 +18,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  insta_assets_crop: ^0.1.0 # custom package from image_crop
+  # insta_assets_crop: ^0.1.0 # custom package from image_crop
+  insta_assets_crop:
+    git:
+      url: https://github.com/abdullahrs/image_crop_plus.git
+      ref: main
   fraction: ^5.0.3 # to show crop ratio in crop view
 
   wechat_assets_picker: ^9.4.0
